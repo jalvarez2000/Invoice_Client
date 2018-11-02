@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add Invoice</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="invoiceForm">
+    <ion-item>
+      <ion-label position="floating">Provider</ion-label>
+      <ion-input type="text" formControlName="Provider"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Total</ion-label>
+      <ion-input type="text" formControlName="Total"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">IVA</ion-label>
+      <ion-input type="text" formControlName="IVA"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Base</ion-label>
+      <ion-input type="text" formControlName="Base"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Date</ion-label>
+      <ion-input type="text" formControlName="Billing_Date"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Comments</ion-label>
+      <ion-input type="text" formControlName="Comments"></ion-input>
+    </ion-item>
+    
+   
+    <ion-button shape="round" color="primary" expand="block" [disabled]="!invoiceForm.valid" (click)="saveInvoice()">Submit</ion-button>
+  </form>
+</ion-content>
+

@@ -26,7 +26,9 @@ const routes: Routes = [
   {
     path: 'create',
     loadChildren: './create/create.module#CreatePageModule'
-  }
+  },  { path: 'invoices', loadChildren: './invoices/invoices.module#InvoicesPageModule' },
+  { path: 'createInvoice', loadChildren: './create-invoice/create-invoice.module#CreateInvoicePageModule' }
+
 ];
 
 @NgModule({
