@@ -6,8 +6,9 @@ import { catchError, tap, map } from 'rxjs/operators';
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
-// const apiUrl = "http://localhost:1337/localhost:3000/api/classroom";
-const apiUrl = "http://192.168.0.7:3000/api/classroom";
+const apiUrl = "http://localhost:1337/localhost:3000/api/classroom";
+const apiInvoiceBase = "http://localhost:1337/localhost:3000/api";
+//const apiUrl = "http://127.0.0.1:3000/api/classroom";
 
 @Injectable({
   providedIn: 'root'
@@ -57,6 +58,14 @@ export class RestApiService {
       );
   }
 
+  postInvoiceForm(data): Observable<any> {
+    const url = `${apiUrl}/add_invoice`;
+    return this.http.post(url, data, httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
   updateClassroom(id: string, data): Observable<any> {
     const url = `${apiUrl}/${id}`;
     return this.http.put(url, data, httpOptions)
@@ -71,5 +80,12 @@ export class RestApiService {
       .pipe(
         catchError(this.handleError)
       );
+  }
+
+  getInvoicesByUserId(id: string): Observable<any> {
+    const url = `${apiInvoiceBase}/invoices/${id}`;
+    return this.http.get(url, httpOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
   }
 }
